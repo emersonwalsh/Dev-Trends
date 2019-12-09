@@ -1,0 +1,25 @@
+Flow:
+
+Home & Description
+Languages
+	Most Popular
+	Loved / Dreaded / Hated
+Frameworks
+	Most Popular
+	Loved / Dreaded / Hated
+Libraries / Tools
+	Most Popular
+	Loved / Dreaded / Hated
+Databases
+	Most Popular
+	Loved / Dreaded / Hated
+Platforms
+	Most Popular
+	Loved / Dreaded / Hated
+Dev Environments
+	All vs. Web vs. Mobile vs. SRE/DevOps
+		iclude a toggle button to switch between
+Primary Operating Systems
+Salary
+	Languages
+	Developer Type
