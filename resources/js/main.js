@@ -2,1133 +2,408 @@ const swiperEle = document.getElementById("swiper-wrapper");
 const vizContainerEle = document.getElementById('visualziation-container');
 let vizEle, vizHeight, vizWidth;
 
+const languages = {
+    names: ['JavaScript',
+        'HTML/CSS',
+        'SQL',
+        'Python',
+        'Java',
+        'Bash/Shell',
+        'C#',
+        'PHP',
+        'C++',
+        'TypeScript',
+        'C',
+        'Ruby',
+        'Go',
+        'Assembly',
+        'Swift',
+        'Kotlin',
+        'R',
+        'VBA',
+        'Objective-C',
+        'Scala',
+        'Rust',
+        'Dart',
+        'Elixir',
+        'Clojure',
+        'WebAssembly',
+        'F#', 
+        'Erlang'
+    ],
+    popularity: [
+        67.8,
+        63.5,
+        54.4,
+        41.7,
+        41.1,
+        36.6,
+        31,
+        26.4,
+        23.5,
+        21.2,
+        20.6,
+        8.4,
+        8.2,
+        6.7,
+        6.6,
+        6.4,
+        5.8,
+        5.5,
+        4.8,
+        3.8,
+        3.2,
+        1.9,
+        1.4,
+        1.4,
+        1.2,
+        0,
+        0
+    ],
+    loved: [
+        66.8,
+        62.2,
+        64.1,
+        73.1,
+        53.4,
+        59.5,
+        67,
+        45.8,
+        52,
+        73.1,
+        42.5,
+        50.3,
+        67.9,
+        35.6,
+        69.2,
+        72.6,
+        51.7,
+        24.8,
+        31.3,
+        58.3,
+        83.5,
+        66.3,
+        68.2,
+        68.3,
+        69.5,
+        61.7,
+        47.4
+    ],
+    dreaded: [
+        33.2,
+        37.8,
+        35.9,
+        26.9,
+        46.6,
+        40.5,
+        33,
+        54.2,
+        48,
+        26.9,
+        57.5,
+        49.7,
+        32.1,
+        64.4,
+        30.8,
+        27.4,
+        48.3,
+        75.2,
+        68.7,
+        41.7,
+        16.5,
+        33.7,
+        31.8,
+        31.7,
+        30.5,
+        38.3,
+        52.6
+    ],
+    wanted: [
+        17.8,
+        6.6,
+        7.6,
+        25.7,
+        8.3,
+        4,
+        7,
+        3.5,
+        9.1,
+        14.6,
+        5,
+        4.4,
+        15,
+        3.1,
+        5.8,
+        11.1,
+        4.9,
+        0,
+        0,
+        4.3,
+        9.5,
+        3.8,
+        3.4,
+        2.2,
+        8.9,
+        3.3,
+        2
+    ]
+}
+
 const slides = [
     {
-        title: 'Developer Suvery 2019',
-        subtitle: 'Trends within Software Development defined by 90K developers.',
-        description: 'Every year, Stack Overflow fields a suvery covering everything from developers’ favorite technologies to their job preferences. This is the 9th consecutive year.',
+        html: `<div class="swiper-slide">
+            <div class="title-title center" data-swiper-parallax="-300" id="product-sans">Development Trends</div>
+            <div class="title-subtitle center" data-swiper-parallax="-200">
+                Explore recent trends within the world of development defined b 90K software developers
+            </div>
+        </div>`,
         viz: false
     },
+    {
+        html: `<div class="swiper-slide">
+            <div class="full-description center" style="position: absolute; top: 30%;" data-swiper-parallax="-200">
+                Every year, Stack Overflow fields a <a href="https://insights.stackoverflow.com/survey/2019">survey</a> covering everything from developers’ favorite technologies to their job preferences. 
+                Here we'll dive into the results to discover major trends within Languages, Frameworks, Libraries, Databases, and more.
+            </div>
+            <div class="logo center" data-swiper-parallax="-300">
+                <img src="resources/img/favicon.png" alt"Stack Overflow Logo">
+            </div>
+        </div>`,
+        viz: false
+    },
+    {
+        html: `<div class="swiper-slide">
+            <div class="title left" data-swiper-parallax="-300">Languages</div>
+            <div class="subtitle left" data-swiper-parallax="-200">
+                Most Popular
+            </div>
+            <div class="text" data-swiper-parallax="-100">
+                <p>For the 7th year in a row, JavaScript is the most commonly used programming language, but Python has risen in the ranks again.
+                 This year, Python just edged out Java in overall ranking, much like it surpassed C# last year and PHP the year before. 
+                 Python is the fastest-growing major programming language today.</p>
+            </div>
+        </div>`,
+        viz: {
+            color: ['#54f686'],
+            animation: true,
+            animationDuration: 2000,
+            tooltip: {},
+            grid: {
+                bottom: 80
+            },
+            xAxis: {
+                data: languages.names,
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    rotate: 45
+                }
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                }
+            },
+            series: [{
+                name: 'Popularity',
+                type: 'bar',
+                itemStyle: {
+                    barBorderRadius: 4
+                },
+                data: languages.popularity
+            }]
+        }
+    },
+    {
+        html: `<div class="swiper-slide">
+            <div class="title left" data-swiper-parallax="-300">Languages</div>
+            <div class="subtitle left" data-swiper-parallax="-200">
+                Most Loved
+            </div>
+            <div class="text" data-swiper-parallax="-100">
+                <p>For the fourth year in a row, Rust is the most loved programming language among our respondents, followed close behind by Python, 
+                the fastest-growing major language today. This means that proportionally, more developers want to continue working with these than other languages.</p>
+            </div>
+        </div>`,
+        viz: {
+            color: ['#ff3f3f'],
+            animation: true,
+            animationDuration: 2000,
+            tooltip: {},
+            grid: {
+                bottom: 80
+            },
+            xAxis: {
+                data: languages.names,
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    rotate: 45
+                }
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                }
+            },
+            series: [{
+                name: 'Loved',
+                type: 'bar',
+                itemStyle: {
+                    barBorderRadius: 4
+                },
+                data: languages.loved
+            }]
+        }
+    },
+    {
+        html: `<div class="swiper-slide">
+            <div class="title left" data-swiper-parallax="-300">Languages</div>
+            <div class="subtitle left" data-swiper-parallax="-200">
+                Most Dreaded
+            </div>
+            <div class="text" data-swiper-parallax="-100">
+                <p>VBA and Objective-C rank as the most dreaded languages this year. Most dreaded means that a high percentage of developers who are currently using 
+                these technologies express no interest in continuing to do so.</p>
+            </div>
+        </div>`,
+        viz: {
+            color: ['#40a6ff'],
+            animation: true,
+            animationDuration: 2000,
+            tooltip: {},
+            grid: {
+                bottom: 80
+            },
+            xAxis: {
+                data: languages.names,
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    rotate: 45
+                }
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                }
+            },
+            series: [{
+                name: 'Dreaded',
+                type: 'bar',
+                itemStyle: {
+                    barBorderRadius: 4
+                },
+                data: languages.dreaded
+            }]
+        }
+    },
+    {
+        html: `<div class="swiper-slide">
+            <div class="title left" data-swiper-parallax="-300">Languages</div>
+            <div class="subtitle left" data-swiper-parallax="-200">
+                Most Wanted
+            </div>
+            <div class="text" data-swiper-parallax="-100">
+                <p>Python is the most wanted language for the third year in a row, meaning that developers who do not yet use it say they want to learn it.</p>
+            </div>
+        </div>`,
+        viz: {
+            color: ['#54f686'],
+            animation: true,
+            animationDuration: 2000,
+            tooltip: {},
+            grid: {
+                bottom: 80
+            },
+            xAxis: {
+                data: languages.names,
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    rotate: 45
+                }
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                }
+            },
+            series: [{
+                name: 'Wanted',
+                type: 'bar',
+                itemStyle: {
+                    barBorderRadius: 4
+                },
+                data: languages.wanted
+            }]
+        }
+    },
     // 1. Languages
-    {
-        title: 'Languages',
-        subtitle: 'Most Popular',
-        description: 'Rust is King',
-        viz: {
-            color: ['#54f686'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Loved',
-                type: 'bar',
-                data: [83.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Languages',
-        subtitle: 'Most Loved',
-        description: 'description',
-        viz: {
-            color: ['#ff3f3f'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Dreaded',
-                type: 'bar',
-                data: [43.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Languages',
-        subtitle: 'Most Dreaded',
-        description: 'description',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Languages',
-        subtitle: 'Most Wanted',
-        description: 'description',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 93.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
     // 2. Frameworks
-    {
-        title: 'Frameworks',
-        subtitle: 'Most Popular',
-        description: 'Rust is King',
-        viz: {
-            color: ['#54f686'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Loved',
-                type: 'bar',
-                data: [83.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Frameworks',
-        subtitle: 'Most Loved',
-        description: 'description',
-        viz: {
-            color: ['#ff3f3f'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Dreaded',
-                type: 'bar',
-                data: [43.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Frameworks',
-        subtitle: 'Most Dreaded',
-        description: 'description',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Frameworks',
-        subtitle: 'Most Wanted',
-        description: 'description',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 93.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
     // 3. Libraries / Tools
-    {
-        title: 'Libraries / Tools',
-        subtitle: 'Most Popular',
-        description: 'Rust is King',
-        viz: {
-            color: ['#54f686'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Loved',
-                type: 'bar',
-                data: [83.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Libraries / Tools',
-        subtitle: 'Most Loved',
-        description: 'description',
-        viz: {
-            color: ['#ff3f3f'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Dreaded',
-                type: 'bar',
-                data: [43.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Libraries / Tools',
-        subtitle: 'Most Dreaded',
-        description: 'description',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Libraries / Tools',
-        subtitle: 'Most Wanted',
-        description: 'description',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 93.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
     // 4. Databases
-    {
-        title: 'Databases',
-        subtitle: 'Most Popular',
-        description: 'Rust is King',
-        viz: {
-            color: ['#54f686'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Loved',
-                type: 'bar',
-                data: [83.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Databases',
-        subtitle: 'Most Loved',
-        description: 'description',
-        viz: {
-            color: ['#ff3f3f'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Dreaded',
-                type: 'bar',
-                data: [43.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Databases',
-        subtitle: 'Most Dreaded',
-        description: 'description',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Databases',
-        subtitle: 'Most Wanted',
-        description: 'description',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 93.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
     // 5. Platforms
-    {
-        title: 'Platforms',
-        subtitle: 'Most Popular',
-        description: 'Rust is King',
-        viz: {
-            color: ['#54f686'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Loved',
-                type: 'bar',
-                data: [83.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Platforms',
-        subtitle: 'Most Loved',
-        description: 'description',
-        viz: {
-            color: ['#ff3f3f'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Dreaded',
-                type: 'bar',
-                data: [43.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Platforms',
-        subtitle: 'Most Dreaded',
-        description: 'description',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 73.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Platforms',
-        subtitle: 'Most Wanted',
-        description: 'description',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 93.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Dev Environments',
-        subtitle: 'All vs Web vs Mobile vs SRE/DevOps',
-        description: 'Include toggle button to jump between ',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [23.5, 73.1, 93.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Primary OS',
-        subtitle: '',
-        description: '',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [53.5, 73.1, 93.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Salary',
-        subtitle: 'Languages',
-        description: '',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [53.5, 73.1, 93.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
-    {
-        title: 'Salary',
-        subtitle: 'Developer Type',
-        description: '',
-        viz: {
-            color: ['#40a6ff'],
-            tooltip: {},
-            grid: {
-                left: 150
-            },
-            yAxis: {
-                data: ['Rust', 'Python', 'TypeScript', 'Kotlin', 'WebAssembly', 'Swift', 'Swift', 'Clojure', 'Elixir', 'Go', 'C#', 'JavaScript', 'Dart', 'SQL', 'HTML/CSS', 'F#', 'Bash/Shell/PowerShell', 'Scala', 'Java', 'C++', 'R', 'Ruby', 'Erlang', 'PHP', 'C', 'Assembly'],
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            xAxis: {
-                min: 0,
-                max: 100,
-                axisLine: {
-                    show: false
-                },
-                splitLine: {
-                    show: false
-                },
-                axisLabel: {
-                    textStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            series: [{
-                name: 'Wanted',
-                type: 'bar',
-                data: [53.5, 73.1, 93.1, 72.6, 69.5, 69.2, 68.3, 68.2, 67.9, 67.0, 66.8, 66.3, 64.1, 62.2, 61.7, 59.5, 58.3, 53.4, 52.0, 51.7, 50.3, 47.4, 45.8, 42.5, 35.6]
-            }]
-        }
-    },
+    // 6. Dev Environment
+    // 7. OS
+    // 8. Salary
 ];
 let slidesEle = ''
 
 slides.forEach(function (slide) {
-    slidesEle += `<div class="swiper-slide">
-                    <div class="title" data-swiper-parallax="-300">` + slide.title + `</div>
-                    <div class="subtitle" data-swiper-parallax="-200">` + slide.subtitle + `</div>
-                    <div class="text" data-swiper-parallax="-100">
-                        <p>` + slide.description + `</p>
-                    </div>
-                </div>`
+    slidesEle += slide.html
 });
 
 swiperEle.innerHTML = slidesEle;
@@ -1155,7 +430,7 @@ swiper.on('slideChange', function () {
         vizEle.style.visibility = 'visible';
         vizEle.style.opacity = 1;
         vizEle.style.height = vizHeight + 'px';
-        vizEle.style.width = vizWidth + 'px';
+        vizEle.style.width = '100%';
         updateViz(idx)
     } else {
         vizEle.style.visibility = 'hidden';
@@ -1171,8 +446,8 @@ function updateViz(idx) {
 }
 
 function initialize() {
-    vizHeight = document.body.clientHeight / 1.25;
-    vizWidth = document.body.clientWidth / 2;
+    vizHeight = document.body.clientHeight / 2;
+    vizWidth = document.body.clientWidth;
     vizContainerEle.innerHTML = `
         <div class="visualziation" id="visualziation"></div>
     `;
