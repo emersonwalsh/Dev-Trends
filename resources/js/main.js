@@ -225,10 +225,10 @@ const frameworks = {
 const slides = [
     {
         html: `<div class="swiper-slide">
-            <div class="top-full flex vertical-bottom horizontal-center" data-swiper-parallax="-300">
+            <div class="top-full flex vertical-bottom horizontal-center center" data-swiper-parallax="-300">
                 <div class="title">Development Trends</div>
             </div>
-            <div class="bottom-full flex vertical-top horizontal-center" data-swiper-parallax="-200">
+            <div class="bottom-full flex vertical-top horizontal-center center" data-swiper-parallax="-200">
                 <div class="sub-title">
                 Explore recent trends within the world of development defined b 90K software developers
                 </div>
@@ -238,8 +238,8 @@ const slides = [
     },
     {
         html: `<div class="swiper-slide">
-            <div class="top-full flex vertical-center horizontal-center" data-swiper-parallax="-300">
-                <div class="sub-title">
+            <div class="top-full flex vertical-center horizontal-center center" data-swiper-parallax="-300">
+                <div class="description">
                     Every year, Stack Overflow fields a <a href="https://insights.stackoverflow.com/survey/2019">survey</a> covering everything from developers’ favorite technologies to their job preferences. 
                     Here we'll dive into the results to discover major trends within Languages, Frameworks, Libraries, Databases, and more.
                 </div>
@@ -257,7 +257,7 @@ const slides = [
             </div>
             <div class="bottom-full center" data-swiper-parallax="-300">
                 <div class="title">Languages</div>
-                <div class="sub-title">
+                <div class="description">
                     Let's dive into Languages! Here are the most popular languages today, along with the most loved and hated languages by developers.
                 </div>
             </div>
@@ -499,7 +499,7 @@ const slides = [
             </div>
             <div class="bottom-full center" data-swiper-parallax="-300">
                 <div class="title">Web Frameworks</div>
-                <div class="sub-title">
+                <div class="description">
                     Now onto Frameworks! Here are the most popular frameworks and how developers feel about them.
                 </div>
             </div>
@@ -784,10 +784,18 @@ function updateViz(idx) {
 }
 
 function initialize() {
+    resize();
+}
+
+function resize() {
     vizHeight = document.body.clientHeight / 2;
     vizWidth = document.body.clientWidth;
+    vizContainerEle.innerHTML = '';
     vizContainerEle.innerHTML = `
         <div class="visualziation" id="visualziation"></div>
     `;
     vizEle = document.getElementById('visualziation');
 }
+
+// Listeners
+window.onresize = resize;
