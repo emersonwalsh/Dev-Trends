@@ -179,6 +179,20 @@ const slides = [
     },
     {
         html: `<div class="swiper-slide">
+            <div class="top-full flex vertical-center horizontal-center" data-swiper-parallax="-300">
+                <img height="60%" src="resources/img/languages.png" alt"Languages">
+            </div>
+            <div class="bottom-full center" data-swiper-parallax="-300">
+                <div class="title">Languages</div>
+                <div class="sub-title">
+                    Let's dive into Languages! Here are the most popular languages today, along with the most loved and hated languages by developers.
+                </div>
+            </div>
+        </div>`,
+        viz: false
+    },
+    {
+        html: `<div class="swiper-slide">
             <div class="top-full">
                 <div class="title left" data-swiper-parallax="-300">Languages</div>
                 <div class="sub-title left" data-swiper-parallax="-200">
@@ -404,6 +418,20 @@ const slides = [
                 data: languages.wanted
             }]
         }
+    },
+    {
+        html: `<div class="swiper-slide">
+            <div class="top-full flex vertical-center horizontal-center" data-swiper-parallax="-300">
+                <img height="80%" src="resources/img/frameworks.png" alt"Frameworks">
+            </div>
+            <div class="bottom-full center" data-swiper-parallax="-300">
+                <div class="title">Frameworks</div>
+                <div class="sub-title">
+                    Now onto Frameworks! Here are the most popular frameworks and how developers feel about them.
+                </div>
+            </div>
+        </div>`,
+        viz: false
     },
     // 1. Languages (done)
     // 2. Frameworks
