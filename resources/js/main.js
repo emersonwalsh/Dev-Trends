@@ -1,4 +1,4 @@
-const swiperEle = document.getElementById("swiper-wrapper");
+const swiperEle = document.getElementById('swiper-wrapper');
 const vizContainerEle = document.getElementById('visualziation-container');
 let vizEle, vizHeight, vizWidth;
 
@@ -28,7 +28,7 @@ const languages = {
         'Elixir',
         'Clojure',
         'WebAssembly',
-        'F#', 
+        'F#',
         'Erlang'
     ],
     popularity: [
@@ -147,7 +147,80 @@ const languages = {
         3.3,
         2
     ]
-}
+};
+
+const frameworks = {
+    names: [
+        'jQuery',
+        'React.js',
+        'Angular',
+        'ASP.NET',
+        'Express',
+        'Spring',
+        'Vue.js',
+        'Django',
+        'Flask',
+        'Laravel',
+        'Ruby on Rails',
+        'Drupal'
+    ],
+    popularity: [
+        48.7,
+        31.3,
+        30.7,
+        26.3,
+        19.7,
+        16.2,
+        15.2,
+        13,
+        12.1,
+        10.5,
+        8.2,
+        3.5,
+    ],
+    loved: [
+        45.3,
+        74.5,
+        57.6,
+        64.9,
+        68.3,
+        65.6,
+        73.6,
+        62.1,
+        61.1,
+        60.1,
+        57.1,
+        30.1
+    ],
+    dreaded: [
+        54.7,
+        25.5,
+        42.4,
+        35.1,
+        31.7,
+        34.4,
+        26.4,
+        37.9,
+        38.9,
+        39.9,
+        42.9,
+        69.9
+    ],
+    wanted: [
+        5,
+        21.5,
+        12.2,
+        3.7,
+        4.7,
+        4,
+        16.1,
+        7.8,
+        4.3,
+        3.1,
+        4.4,
+        1
+    ]
+};
 
 const slides = [
     {
@@ -425,7 +498,7 @@ const slides = [
                 <img height="80%" src="resources/img/frameworks.png" alt"Frameworks">
             </div>
             <div class="bottom-full center" data-swiper-parallax="-300">
-                <div class="title">Frameworks</div>
+                <div class="title">Web Frameworks</div>
                 <div class="sub-title">
                     Now onto Frameworks! Here are the most popular frameworks and how developers feel about them.
                 </div>
@@ -433,9 +506,234 @@ const slides = [
         </div>`,
         viz: false
     },
+    {
+        html: `<div class="swiper-slide">
+            <div class="top-full">
+                <div class="title left" data-swiper-parallax="-300">Frameworks</div>
+                <div class="sub-title left" data-swiper-parallax="-200">
+                    Most Popular
+                </div>
+                <div class="description left" data-swiper-parallax="-100">
+                    <p>This year, we asked about frameworks for the web separately from other frameworks and libraries. 
+                    jQuery is the most broadly used of these web frameworks, and this year more developers say they use React.js than Angular, 
+                    a switch from last year.</p>
+                </div>
+            </div>
+        </div>`,
+        viz: {
+            color: ['#54f686'],
+            animation: true,
+            animationDuration: 2000,
+            tooltip: {},
+            grid: {
+                bottom: 80
+            },
+            xAxis: {
+                data: frameworks.names,
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    rotate: 45
+                }
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                }
+            },
+            series: [{
+                name: 'Popularity',
+                type: 'bar',
+                itemStyle: {
+                    barBorderRadius: 4
+                },
+                data: frameworks.popularity
+            }]
+        }
+    },
+    {
+        html: `<div class="swiper-slide">
+            <div class="top-full">
+                <div class="title left" data-swiper-parallax="-300">Frameworks</div>
+                <div class="sub-title left" data-swiper-parallax="-200">
+                    Most Loved
+                </div>
+                <div class="description left" data-swiper-parallax="-100">
+                    <p>Developers love React.js and Vue.js.</p>
+                </div>
+            </div>
+        </div>`,
+        viz: {
+            color: ['#ff3f3f'],
+            animation: true,
+            animationDuration: 2000,
+            tooltip: {},
+            grid: {
+                bottom: 80
+            },
+            xAxis: {
+                data: frameworks.names,
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    rotate: 45
+                }
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                }
+            },
+            series: [{
+                name: 'Loved',
+                type: 'bar',
+                itemStyle: {
+                    barBorderRadius: 4
+                },
+                data: frameworks.loved
+            }]
+        }
+    },
+    {
+        html: `<div class="swiper-slide">
+            <div class="top-full">
+                <div class="title left" data-swiper-parallax="-300">Frameworks</div>
+                <div class="sub-title left" data-swiper-parallax="-200">
+                    Most Dreaded
+                </div>
+                <div class="description left" data-swiper-parallax="-100">
+                    <p>Drupal and jQuery are the most dreaded.</p>
+                </div>
+            </div>
+        </div>`,
+        viz: {
+            color: ['#40a6ff'],
+            animation: true,
+            animationDuration: 2000,
+            tooltip: {},
+            grid: {
+                bottom: 80
+            },
+            xAxis: {
+                data: frameworks.names,
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    rotate: 45
+                }
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                }
+            },
+            series: [{
+                name: 'Dreaded',
+                type: 'bar',
+                itemStyle: {
+                    barBorderRadius: 4
+                },
+                data: frameworks.dreaded
+            }]
+        }
+    },
+    {
+        html: `<div class="swiper-slide">
+            <div class="top-full">
+                <div class="title left" data-swiper-parallax="-300">Frameworks</div>
+                <div class="sub-title left" data-swiper-parallax="-200">
+                    Most Wanted
+                </div>
+                <div class="description left" data-swiper-parallax="-100">
+                    <p>Developers not only love React and Vue, they want to learn them too.</p>
+                </div>
+            </div>
+        </div>`,
+        viz: {
+            color: ['#54f686'],
+            animation: true,
+            animationDuration: 2000,
+            tooltip: {},
+            grid: {
+                bottom: 80
+            },
+            xAxis: {
+                data: frameworks.names,
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    },
+                    rotate: 45
+                }
+            },
+            yAxis: {
+                axisLine: {
+                    show: false
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false
+                }
+            },
+            series: [{
+                name: 'Wanted',
+                type: 'bar',
+                itemStyle: {
+                    barBorderRadius: 4
+                },
+                data: frameworks.wanted
+            }]
+        }
+    },
     // 1. Languages (done)
     // 2. Frameworks
-    // 3. Libraries / Tools
     // 4. Databases
     // 5. Platforms
     // 6. Dev Environment
