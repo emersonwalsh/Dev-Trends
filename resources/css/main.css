@@ -27,6 +27,7 @@ body {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 40px 60px;
+
 }
 
 .parallax-bg {
@@ -40,67 +41,90 @@ body {
     background-position: center;
 }
 
-/* Title Slide */
-.swiper-slide .title-title {
-    position: absolute;
-    top: 40%;
-    height: 48px;
-    width: calc(100% - 120px);
-    font-size: 48px;
-    font-weight: 300;
+
+/* Positioning */
+.top-full {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
 }
 
-.swiper-slide .title-subtitle {
-    position: absolute;
-    top: 55%;
-    width: calc(100% - 120px);
-    font-size: 28px;
+.bottom-full {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
 }
 
-/* General Slides */
-.swiper-slide .title {
+.left-full {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+}
+
+.right-full {
+    position: relative;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+}
+
+.flex {
+    display: flex;
+}
+
+.vertical-center {
+    align-items: center;
+}
+
+.vertical-top {
+    align-items: flex-start;
+}
+
+.vertical-bottom {
+    align-items: flex-end;
+}
+
+.horizontal-center {
+    justify-content: center;
+}
+
+/* Text */
+.title {
     font-size: 41px;
     font-weight: 300;
     line-height: 50px;
 }
 
-.swiper-slide .subtitle {
-    font-size: 31px;
+.sub-title {
+    font-size: 28px;
     line-height: 40px;
-    height: 40px;
 }
 
-.swiper-slide .text {
+.description {
     font-size: 21px;
-    line-height: 30px;
+    line-height: 28px;
 }
 
-.swiper-slide .full-description {
-    font-size: 21px;
-    width: calc(100% - 180px);
-    padding: 0 30px;
-}
-
-.swiper-slide .logo {
-    position: absolute; 
-    top: 50%; 
-    height: 30%;
-    width: calc(100% - 120px);
-}
-
-.swiper-slide .logo img { 
-    height: 100%;
-}
-
-.swiper-slide .center {
+.center {
     text-align: center;
 }
 
-.swiper-slide .left {
+.left {
     text-align: left;
 }
 
-.swiper-slide a {
+.right {
+    text-align: right;
+}
+
+a {
     color: #fff;
 }
 
@@ -111,8 +135,6 @@ body {
     left: calc(var(--swiper-navigation-size)/ 44 * 27 + 10px);
     right: calc(var(--swiper-navigation-size)/ 44 * 27 + 10px);
     bottom: 18px;
-    /* height: 400px;
-    width: 400px; */
     background-color: transparent;
     z-index: 2;
 }

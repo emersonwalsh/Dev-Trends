@@ -152,35 +152,43 @@ const languages = {
 const slides = [
     {
         html: `<div class="swiper-slide">
-            <div class="title-title center" data-swiper-parallax="-300" id="product-sans">Development Trends</div>
-            <div class="title-subtitle center" data-swiper-parallax="-200">
+            <div class="top-full flex vertical-bottom horizontal-center" data-swiper-parallax="-300">
+                <div class="title">Development Trends</div>
+            </div>
+            <div class="bottom-full flex vertical-top horizontal-center" data-swiper-parallax="-200">
+                <div class="sub-title">
                 Explore recent trends within the world of development defined b 90K software developers
+                </div>
             </div>
         </div>`,
         viz: false
     },
     {
         html: `<div class="swiper-slide">
-            <div class="full-description center" style="position: absolute; top: 30%;" data-swiper-parallax="-200">
-                Every year, Stack Overflow fields a <a href="https://insights.stackoverflow.com/survey/2019">survey</a> covering everything from developers’ favorite technologies to their job preferences. 
-                Here we'll dive into the results to discover major trends within Languages, Frameworks, Libraries, Databases, and more.
+            <div class="top-full flex vertical-center horizontal-center" data-swiper-parallax="-300">
+                <div class="sub-title">
+                    Every year, Stack Overflow fields a <a href="https://insights.stackoverflow.com/survey/2019">survey</a> covering everything from developers’ favorite technologies to their job preferences. 
+                    Here we'll dive into the results to discover major trends within Languages, Frameworks, Libraries, Databases, and more.
+                </div>
             </div>
-            <div class="logo center" data-swiper-parallax="-300">
-                <img src="resources/img/favicon.png" alt"Stack Overflow Logo">
+            <div class="bottom-full center" data-swiper-parallax="-300">
+                <img height="80%" src="resources/img/favicon.png" alt"Stack Overflow Logo">
             </div>
         </div>`,
         viz: false
     },
     {
         html: `<div class="swiper-slide">
-            <div class="title left" data-swiper-parallax="-300">Languages</div>
-            <div class="subtitle left" data-swiper-parallax="-200">
-                Most Popular
-            </div>
-            <div class="text" data-swiper-parallax="-100">
-                <p>For the 7th year in a row, JavaScript is the most commonly used programming language, but Python has risen in the ranks again.
-                 This year, Python just edged out Java in overall ranking, much like it surpassed C# last year and PHP the year before. 
-                 Python is the fastest-growing major programming language today.</p>
+            <div class="top-full">
+                <div class="title left" data-swiper-parallax="-300">Languages</div>
+                <div class="sub-title left" data-swiper-parallax="-200">
+                    Most Popular
+                </div>
+                <div class="description left" data-swiper-parallax="-100">
+                    <p>For the 7th year in a row, JavaScript is the most commonly used programming language, but Python has risen in the ranks again.
+                    This year, Python just edged out Java in overall ranking, much like it surpassed C# last year and PHP the year before. 
+                    Python is the fastest-growing major programming language today.</p>
+                </div>
             </div>
         </div>`,
         viz: {
@@ -229,13 +237,15 @@ const slides = [
     },
     {
         html: `<div class="swiper-slide">
-            <div class="title left" data-swiper-parallax="-300">Languages</div>
-            <div class="subtitle left" data-swiper-parallax="-200">
-                Most Loved
-            </div>
-            <div class="text" data-swiper-parallax="-100">
-                <p>For the fourth year in a row, Rust is the most loved programming language among our respondents, followed close behind by Python, 
-                the fastest-growing major language today. This means that proportionally, more developers want to continue working with these than other languages.</p>
+            <div class="top-full">
+                <div class="title left" data-swiper-parallax="-300">Languages</div>
+                <div class="sub-title left" data-swiper-parallax="-200">
+                    Most Loved
+                </div>
+                <div class="description left" data-swiper-parallax="-100">
+                    <p>For the fourth year in a row, Rust is the most loved programming language among our respondents, followed close behind by Python, 
+                    the fastest-growing major language today. This means that proportionally, more developers want to continue working with these than other languages.</p>
+                </div>
             </div>
         </div>`,
         viz: {
@@ -284,13 +294,15 @@ const slides = [
     },
     {
         html: `<div class="swiper-slide">
-            <div class="title left" data-swiper-parallax="-300">Languages</div>
-            <div class="subtitle left" data-swiper-parallax="-200">
-                Most Dreaded
-            </div>
-            <div class="text" data-swiper-parallax="-100">
-                <p>VBA and Objective-C rank as the most dreaded languages this year. Most dreaded means that a high percentage of developers who are currently using 
-                these technologies express no interest in continuing to do so.</p>
+            <div class="top-full">
+                <div class="title left" data-swiper-parallax="-300">Languages</div>
+                <div class="sub-title left" data-swiper-parallax="-200">
+                    Most Dreaded
+                </div>
+                <div class="description left" data-swiper-parallax="-100">
+                    <p>VBA and Objective-C rank as the most dreaded languages this year. Most dreaded means that a high percentage of developers who are currently using 
+                    these technologies express no interest in continuing to do so.</p>
+                </div>
             </div>
         </div>`,
         viz: {
@@ -339,12 +351,14 @@ const slides = [
     },
     {
         html: `<div class="swiper-slide">
-            <div class="title left" data-swiper-parallax="-300">Languages</div>
-            <div class="subtitle left" data-swiper-parallax="-200">
-                Most Wanted
-            </div>
-            <div class="text" data-swiper-parallax="-100">
-                <p>Python is the most wanted language for the third year in a row, meaning that developers who do not yet use it say they want to learn it.</p>
+            <div class="top-full">
+                <div class="title left" data-swiper-parallax="-300">Languages</div>
+                <div class="sub-title left" data-swiper-parallax="-200">
+                    Most Wanted
+                </div>
+                <div class="description left" data-swiper-parallax="-100">
+                    <p>Python is the most wanted language for the third year in a row, meaning that developers who do not yet use it say they want to learn it.</p>
+                </div>
             </div>
         </div>`,
         viz: {
@@ -391,7 +405,7 @@ const slides = [
             }]
         }
     },
-    // 1. Languages
+    // 1. Languages (done)
     // 2. Frameworks
     // 3. Libraries / Tools
     // 4. Databases
@@ -437,8 +451,6 @@ swiper.on('slideChange', function () {
         vizEle.style.opacity = 0;
     }
 });
-
-
 
 function updateViz(idx) {
     const myChart = echarts.init(vizEle);
